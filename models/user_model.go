@@ -23,7 +23,7 @@ type User struct {
 CreateUserSchema
 @desc: adds schema validation and indexes to collection
 */
-func CreateUser(Name string, Email string) {
+func CreateUser(Name string, Email string) result error  {
 	jsonSchema := bson.M{
 		"bsonType": "object",
 		"required": []string{"name", "email", "password"},
@@ -65,5 +65,28 @@ func CreateUser(Name string, Email string) {
 	}
 
 	return result
+}
 
+func ListUsers(filter bson) error {
+	cursor, err := UserCollection.Find(configs.Ctx, filter)
+
+    if err!= nil {
+        return err
+    }
+
+    defer cursor.Close(configs.Ctx)
+
+    for cursor.Next(configs.Ctx) {
+        var user User
+
+        err := cursor.Decode(&user)
+
+        if err!= nil {
+            return err
+        }
+
+        fmt.Println(user)
+    }
+
+    return users
 }

@@ -1,16 +1,16 @@
 package routes
 
 import (
-	controller "github.com/frani/go-fiber-api/controllers"
+	"github.com/frani/go-fiber-api/handlers"
 	"github.com/gofiber/fiber/v2"
 )
 
 func UsersRoutes(app *fiber.App) {
 	// Create routes group.
-	route := app.Group("/")
-	route.Get("/", controller.ListUsers)
-	route.Post("/", controller.PostUser)
-	route.Get("/:userId", controller.GetUser)
-	route.Patch("/:userId", controller.PatchUser)
-	route.Delete("/:userId", controller.DeleteUser)
+	route := app.Group("/users")
+	route.Get("/", handlers.ListUsers)
+	route.Post("/", handlers.PostUser)
+	route.Get("/:userId", handlers.GetUser)
+	route.Patch("/:userId", handlers.PatchUser)
+	route.Delete("/:userId", handlers.DeleteUser)
 }
