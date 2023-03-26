@@ -1,0 +1,10 @@
+[air]
+log_level = "debug"
+working_dir = "."
+exclude_dir = ["vendor", "frontend"]
+delay = 1000
+verbose = true
+
+[build]
+bin = "tmp/main"
+cmd = "go build -o tmp/main"
