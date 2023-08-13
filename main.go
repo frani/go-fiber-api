@@ -5,8 +5,6 @@ import (
 
 	"github.com/frani/go-fiber-api/middlewares"
 
-	"github.com/frani/go-fiber-api/routes"
-
 	"flag"
 	"log"
 
